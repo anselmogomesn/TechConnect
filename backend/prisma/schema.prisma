@@ -563,8 +563,10 @@ model Report {
   handler     User?    @relation("handler", fields: [handledBy], references: [id], onDelete: SetNull)
 
   // Target relations (optional based on targetType)
-  post        Post?    @relation("reportedPost", fields: [targetId], references: [id], onDelete: Cascade)
-  comment     Comment? @relation("reportedComment", fields: [targetId], references: [id], onDelete: Cascade)
+  reportedPostId String?
+  reportedCommentId String?
+  post        Post?    @relation("reportedPost", fields: [reportedPostId], references: [id], onDelete: Cascade)
+  comment     Comment? @relation("reportedComment", fields: [reportedCommentId], references: [id], onDelete: Cascade)
 
   @@index([reporterId])
   @@index([targetType])
