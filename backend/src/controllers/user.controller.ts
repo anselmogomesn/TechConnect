@@ -43,7 +43,7 @@ export class UserController {
     res.json({ message: 'Username updated', username: result.username });
   });
 
-  getSessions = asyncHandler(async (_req: Request, res: Response) => {
+  getSessions = asyncHandler(async (req: Request, res: Response) => {
     const sessions = await userService.getSessions(req.userId!);
     res.json({ sessions });
   });
@@ -53,7 +53,7 @@ export class UserController {
     res.json({ message: 'Session revoked' });
   });
 
-  setup2FA = asyncHandler(async (_req: Request, res: Response) => {
+  setup2FA = asyncHandler(async (req: Request, res: Response) => {
     const result = await userService.setup2FA(req.userId!);
     res.json(result);
   });

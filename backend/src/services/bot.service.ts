@@ -53,7 +53,7 @@ const knowledge: KBEntry[] = [
 ];
 
 // ─── RESPOSTAS (armazenadas como strings com placeholder) ──
-const responses: Record<string, string> = {
+const responses: Record<string, string | string[]> = {
   bot_about: `🤖 **TechBot 3.0** — Assistente Inteligente TechConnect
 
 Sou um assistente autônomo projetado para ajudar você a aproveitar ao máximo a plataforma!

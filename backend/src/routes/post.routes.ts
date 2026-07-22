@@ -17,7 +17,7 @@ const postUpload = multer({
       cb(null, `post-${uuidv4()}${ext}`);
     },
   }),
-  fileFilter: (_req: any, file: Express.Multer.File, cb: multer.FileFilterCallback) => {
+  fileFilter: (_req: any, file: multer.File, cb: multer.FileFilterCallback) => {
     const allowed = [...config.upload.allowedImageTypes, ...config.upload.allowedVideoTypes];
     if (allowed.includes(file.mimetype)) cb(null, true);
     else cb(new Error('Invalid file type'));
@@ -38,7 +38,7 @@ router.get('/user/:username', postController.getByUser);
 
 // POST /api/posts/upload - Upload media for post
 router.post('/upload', uploadLimiter, postUpload.array('media', 5), (req, res) => {
-  const files = (req.files as Express.Multer.File[]) || [];
+  const files = (req.files as multer.File[]) || [];
   const urls = files.map((f) => `/uploads/posts/${f.filename}`);
   res.json({ urls, media: urls[0] || null });
 });

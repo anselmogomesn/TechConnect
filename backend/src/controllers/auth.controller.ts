@@ -26,18 +26,19 @@ export class AuthController {
     const userAgent = req.headers['user-agent'];
     const result = await authService.login(req.body, ip, userAgent);
 
-    if (result.requiresTwoFactor) {
+    if ('requiresTwoFactor' in result && result.requiresTwoFactor) {
       res.json({ requiresTwoFactor: true, userId: result.userId });
       return;
     }
 
-    this.setTokenCookies(res, result.accessToken!, result.refreshToken!);
+    const loginResult = result as any;
+    this.setTokenCookies(res, loginResult.accessToken, loginResult.refreshToken);
 
     res.json({
       message: 'Login successful',
-      user: result.user,
-      accessToken: result.accessToken,
-      sessionId: result.sessionId,
+      user: loginResult.user,
+      accessToken: loginResult.accessToken,
+      sessionId: loginResult.sessionId,
     });
   });
 

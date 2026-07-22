@@ -26,6 +26,9 @@ declare global {
   }
 }
 
+// Re-export para outros arquivos poderem usar
+export type AuthRequest = import('express').Request & { userId?: string; userRole?: string; user?: JwtPayload };
+
 export const authenticate = asyncHandler(
   async (req, _res: Response, next: NextFunction) => {
     // 1. Try cookie first (Refresh token strategy)

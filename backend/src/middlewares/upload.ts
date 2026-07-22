@@ -14,7 +14,7 @@ const storage = multer.diskStorage({
   },
 });
 
-const fileFilter = (_req: any, file: Express.Multer.File, cb: multer.FileFilterCallback) => {
+const fileFilter = (_req: any, file: multer.File, cb: multer.FileFilterCallback) => {
   const allowed = [
     ...config.upload.allowedImageTypes,
     ...config.upload.allowedVideoTypes,
@@ -48,7 +48,7 @@ export const uploadAvatar = multer({
       cb(null, `avatar-${uuidv4()}${ext}`);
     },
   }),
-  fileFilter: (_req: any, file: Express.Multer.File, cb: multer.FileFilterCallback) => {
+  fileFilter: (_req: any, file: multer.File, cb: multer.FileFilterCallback) => {
     if (config.upload.allowedImageTypes.includes(file.mimetype)) {
       cb(null, true);
     } else {
@@ -66,7 +66,7 @@ export const uploadBanner = multer({
       cb(null, `banner-${uuidv4()}${ext}`);
     },
   }),
-  fileFilter: (_req: any, file: Express.Multer.File, cb: multer.FileFilterCallback) => {
+  fileFilter: (_req: any, file: multer.File, cb: multer.FileFilterCallback) => {
     if (config.upload.allowedImageTypes.includes(file.mimetype)) {
       cb(null, true);
     } else {
