@@ -1,0 +1,9 @@
+@echo off
+REM ---------------------------------------------------------------------------
+REM Copie este arquivo para:  api-key.local.bat
+REM Cole sua chave DeepSeek abaixo.
+REM NAO compartilhe api-key.local.bat.
+REM Chave: https://platform.deepseek.com
+REM ---------------------------------------------------------------------------
+
+set "DEEPSEEK_API_KEY=sk-SUA_CHAVE_AQUI"

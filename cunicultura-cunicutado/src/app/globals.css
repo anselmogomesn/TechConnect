@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #1B5E20;
+  --color-primary-dark: #144317;
+  --color-primary-light: #2E7D32;
+  --color-primary-lighter: #4CAF50;
+  --color-secondary: #4CAF50;
+  --color-secondary-light: #81C784;
+  --color-secondary-lighter: #A5D6A7;
+  --color-white: #FFFFFF;
+  --color-gray-50: #F5F5F5;
+  --color-gray-100: #EEEEEE;
+  --color-gray-200: #E0E0E0;
+  --color-gray-300: #BDBDBD;
+  --color-gray-400: #9E9E9E;
+  --color-gray-500: #757575;
+  --color-gray-600: #616161;
+  --color-gray-700: #424242;
+  --color-gray-800: #303030;
+  --color-gray-900: #212121;
+  --color-brown: #8D6E63;
+  --color-brown-light: #A1887F;
+  --color-brown-dark: #6D4C41;
+  --color-accent: #FF9800;
+  --color-accent-light: #FFB74D;
+  --color-accent-dark: #F57C00;
+  --color-success: #4CAF50;
+  --color-warning: #FF9800;
+  --color-error: #F44336;
+  --color-info: #2196F3;
+  --font-poppins: 'Poppins', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+  --font-montserrat: 'Montserrat', sans-serif;
+}
+
+@layer base {
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+  body { font-family: var(--font-inter); color: #303030; background: #FFFFFF; line-height: 1.6; overflow-x: hidden; }
+  h1, h2, h3, h4, h5, h6 { font-family: var(--font-poppins); font-weight: 700; line-height: 1.2; color: #212121; }
+  h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+  h2 { font-size: clamp(1.5rem, 4vw, 2.5rem); }
+  h3 { font-size: clamp(1.25rem, 3vw, 1.75rem); }
+  h4 { font-size: clamp(1.1rem, 2vw, 1.35rem); }
+}
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideInLeft { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes slideInRight { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes scaleIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+@keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+
+.animate-fadeIn { animation: fadeIn 0.6s ease-out forwards; }
+.animate-slideInLeft { animation: slideInLeft 0.6s ease-out forwards; }
+.animate-slideInRight { animation: slideInRight 0.6s ease-out forwards; }
+.animate-scaleIn { animation: scaleIn 0.4s ease-out forwards; }
+.animate-float { animation: float 3s ease-in-out infinite; }
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #EEEEEE; }
+::-webkit-scrollbar-thumb { background: #4CAF50; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #1B5E20; }
+
+::selection { background: #1B5E20; color: #FFFFFF; }
+
+:focus-visible { outline: 2px solid #4CAF50; outline-offset: 2px; border-radius: 6px; }
+
+.gradient-text {
+  background: linear-gradient(135deg, #1B5E20, #4CAF50);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.section-padding { padding: 5rem 1rem; }
+@media (min-width: 768px) { .section-padding { padding: 6rem 2rem; } }
+@media (min-width: 1024px) { .section-padding { padding: 8rem 2rem; } }
+
+.container-site { max-width: 1280px; margin: 0 auto; padding: 0 1rem; }
+@media (min-width: 768px) { .container-site { padding: 0 2rem; } }
+
+.shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.skeleton { background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: 10px; }
+
+.title-line { width: 60px; height: 3px; background: linear-gradient(90deg, #1B5E20, #4CAF50); margin: 0.5rem auto 1rem; border-radius: 2px; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.75rem 1.5rem; font-family: var(--font-poppins); font-weight: 600; font-size: 0.9rem; border: none; border-radius: 10px; cursor: pointer; transition: all 0.3s ease; text-decoration: none; white-space: nowrap; }
+.btn-primary { background: linear-gradient(135deg, #1B5E20, #2E7D32); color: #FFFFFF; box-shadow: 0 4px 15px rgba(27, 94, 32, 0.3); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(27, 94, 32, 0.4); }
+.btn-secondary { background: transparent; color: #1B5E20; border: 2px solid #1B5E20; }
+.btn-secondary:hover { background: #1B5E20; color: #FFFFFF; transform: translateY(-2px); }
+.btn-accent { background: linear-gradient(135deg, #FF9800, #F57C00); color: #FFFFFF; box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3); }
+.btn-accent:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(255, 152, 0, 0.4); }
+.btn-white { background: #FFFFFF; color: #1B5E20; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
+.btn-white:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15); }
+.btn-lg { padding: 1rem 2rem; font-size: 1rem; }
+.btn-sm { padding: 0.5rem 1rem; font-size: 0.8rem; }
+
+.card { background: #FFFFFF; border-radius: 16px; box-shadow: 0 2px 20px rgba(27, 94, 32, 0.08); transition: all 0.3s ease; overflow: hidden; }
+.card:hover { box-shadow: 0 8px 40px rgba(27, 94, 32, 0.15); transform: translateY(-4px); }
+
+.badge { display: inline-flex; align-items: center; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; font-family: var(--font-poppins); }
+.badge-primary { background: #4CAF50; color: #FFFFFF; }
+.badge-accent { background: #FF9800; color: #FFFFFF; }
+
+.price { font-family: var(--font-poppins); font-weight: 700; color: #1B5E20; }
+.price-old { font-family: var(--font-inter); color: #9E9E9E; text-decoration: line-through; font-size: 0.9rem; }

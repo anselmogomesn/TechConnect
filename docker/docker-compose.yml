@@ -1,0 +1,80 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ../backend
+      dockerfile: ../docker/backend.Dockerfile
+    container_name: techconnect-backend
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=postgresql://anselmo:anselmo_pass@postgres:5432/anselmo?schema=public
+      - JWT_SECRET=${JWT_SECRET}
+      - JWT_REFRESH_SECRET=${JWT_REFRESH_SECRET}
+      - CORS_ORIGIN=https://app.techconnect.com
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    volumes:
+      - uploads:/app/uploads
+    restart: unless-stopped
+    networks:
+      - techconnect-network
+
+  frontend:
+    build:
+      context: ../frontend
+      dockerfile: ../docker/frontend.Dockerfile
+    container_name: techconnect-frontend
+    ports:
+      - '80:80'
+      - '443:443'
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - techconnect-network
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: techconnect-postgres
+    environment:
+      POSTGRES_USER: anselmo
+      POSTGRES_PASSWORD: anselmo_pass
+      POSTGRES_DB: techconnect
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U anselmo']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    networks:
+      - techconnect-network
+
+  redis:
+    image: redis:7-alpine
+    container_name: techconnect-redis
+    ports:
+      - '6379:6379'
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+    networks:
+      - techconnect-network
+
+volumes:
+  postgres_data:
+  redis_data:
+  uploads:
+
+networks:
+  techconnect-network:
+    driver: bridge

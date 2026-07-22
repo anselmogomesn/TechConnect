@@ -1,0 +1,33 @@
+# TechConnect - Render Blueprint
+services:
+  - type: web
+    name: techconnect-backend
+    env: node
+    region: ohio
+    plan: free
+    buildCommand: cd backend && npm install && npx prisma generate && npm run build
+    startCommand: cd backend && npx prisma migrate deploy && npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: "3000"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: techconnect-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_REFRESH_SECRET
+        generateValue: true
+      - key: COOKIE_SECRET
+        generateValue: true
+      - key: CORS_ORIGIN
+        value: https://techconnect-frontend.vercel.app
+
+databases:
+  - name: techconnect-db
+    plan: free
+    region: ohio
+    databaseType: postgres
+    ipAllowList: []

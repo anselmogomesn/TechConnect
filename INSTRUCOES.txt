@@ -1,0 +1,112 @@
+================================================================================
+  Claude Code + DeepSeek Flash [1M] — effort xhigh
+  Instruções — qualquer PC Windows com Claude Code instalado
+================================================================================
+
+LOCAL DESTA PASTA
+  C:\Users\Afritronic\Desktop\ClaudeCode-DeepSeek-Hibrido
+
+  (Em outro PC a pasta pode estar em outro lugar; rode o .bat da pasta.)
+
+--------------------------------------------------------------------------------
+CONFIGURACAO ATUAL (preconfigurada)
+--------------------------------------------------------------------------------
+
+  API key:     ja definida em api-key.local.bat
+  Modelo:      deepseek-v4-flash[1m]  (agente principal E subagentes)
+  Esforco:     xhigh
+  Endpoint:    https://api.deepseek.com/anthropic
+  Permissoes:  bypassPermissions
+
+  NAO usa DeepSeek Pro — somente Flash.
+
+--------------------------------------------------------------------------------
+ARQUIVOS
+--------------------------------------------------------------------------------
+
+  ClaudeCode-DeepSeek-Hibrido.bat   -> iniciar (Flash + xhigh)
+  api-key.local.bat                 -> chave preconfigurada (nao compartilhe)
+  api-key.local.bat.example         -> modelo para outro PC / outra chave
+  INSTRUCOES.txt                    -> este arquivo
+  README.md                         -> resumo markdown
+
+--------------------------------------------------------------------------------
+1) REQUISITOS (uma vez por PC)
+--------------------------------------------------------------------------------
+
+  1. Node.js:  https://nodejs.org/
+  2. Claude Code no CMD:
+
+       npm install -g @anthropic-ai/claude-code
+
+  3. Confirme:
+
+       where claude
+
+--------------------------------------------------------------------------------
+2) CHAVE API
+--------------------------------------------------------------------------------
+
+  Ja preconfigurada neste pacote em api-key.local.bat.
+
+  Para trocar a chave: edite api-key.local.bat e altere:
+
+    set "DEEPSEEK_API_KEY=sk-..."
+
+  Em outro PC com outra conta: use o .example ou edite api-key.local.bat.
+
+  Chaves: https://platform.deepseek.com
+
+  NAO compartilhe api-key.local.bat em chat, e-mail ou Git.
+
+--------------------------------------------------------------------------------
+3) COMO INICIAR
+--------------------------------------------------------------------------------
+
+  Duplo clique em:
+
+    ClaudeCode-DeepSeek-Hibrido.bat
+
+  Ou no CMD:
+
+    cd /d C:\Users\Afritronic\Desktop\ClaudeCode-DeepSeek-Hibrido
+    ClaudeCode-DeepSeek-Hibrido.bat
+
+--------------------------------------------------------------------------------
+4) COPIAR PARA OUTRO PC
+--------------------------------------------------------------------------------
+
+  1. Copie a pasta.
+  2. Instale Node.js + Claude Code no PC novo.
+  3. Se quiser a mesma chave, leve api-key.local.bat; senao crie outra.
+  4. Duplo clique no .bat.
+
+--------------------------------------------------------------------------------
+5) PROBLEMAS COMUNS
+--------------------------------------------------------------------------------
+
+  Claude Code nao encontrado
+    -> npm install -g @anthropic-ai/claude-code
+    -> where claude
+
+  Nenhuma API key
+    -> Confira api-key.local.bat ou DEEPSEEK_API_KEY
+
+  401 / auth
+    -> Chave invalida; gere outra no platform.deepseek.com
+
+  Effort xhigh rejeitado
+    -> Atualize o Claude Code: npm install -g @anthropic-ai/claude-code@latest
+    -> Se ainda falhar, o build pode nao aceitar xhigh; avise e ajustamos.
+
+--------------------------------------------------------------------------------
+6) SEGURANCA
+--------------------------------------------------------------------------------
+
+  - api-key.local.bat e privado.
+  - Se a chave vazar: revogue em https://platform.deepseek.com
+  - Com este launcher nao precisa de login Anthropic.
+
+================================================================================
+  Fim das instrucoes
+================================================================================
