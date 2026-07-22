@@ -16,17 +16,6 @@ export interface JwtPayload {
   sessionId: string;
 }
 
-declare global {
-  namespace Express {
-    interface Request {
-      user?: JwtPayload;
-      userId?: string;
-      userRole?: string;
-    }
-  }
-}
-
-// Re-export para outros arquivos poderem usar
 export type AuthRequest = import('express').Request & { userId?: string; userRole?: string; user?: JwtPayload };
 
 export const authenticate = asyncHandler(
