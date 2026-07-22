@@ -1,6 +1,6 @@
 // ============================================
-// ANSELMO - Rede Social Profissional
-// Prisma Schema - SQLite Compatible
+// TechConnect - Rede Social Profissional
+// Prisma Schema
 // ============================================
 
 generator client {
@@ -8,7 +8,7 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
