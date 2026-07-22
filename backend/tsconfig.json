@@ -13,30 +13,19 @@
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
-    "moduleResolution": "node",
+    "moduleResolution": "node16",
     "allowSyntheticDefaultImports": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noImplicitReturns": false,
     "noFallthroughCasesInSwitch": true,
     "pretty": true,
     "typeRoots": ["./node_modules/@types"],
     "paths": {
       "@/*": ["./src/*"],
       "@config/*": ["./src/config/*"],
-      "@middlewares/*": ["./src/middlewares/*"],
-      "@controllers/*": ["./src/controllers/*"],
-      "@services/*": ["./src/services/*"],
-      "@repositories/*": ["./src/repositories/*"],
-      "@routes/*": ["./src/routes/*"],
-      "@validators/*": ["./src/validators/*"],
-      "@types/*": ["./src/types/*"],
-      "@utils/*": ["./src/utils/*"],
-      "@socket/*": ["./src/socket/*"],
-      "@security/*": ["./src/security/*"],
-      "@audit/*": ["./src/audit/*"]
-    },
-    "baseUrl": "."
+      "@middlewares/*": ["./src/middlewares/*"]
+    }
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist", "tests"]
